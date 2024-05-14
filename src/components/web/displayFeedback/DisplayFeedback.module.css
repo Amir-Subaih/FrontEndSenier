@@ -1,0 +1,91 @@
+.cardContainer {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding-bottom: 20px; /* Add some space at the bottom */
+    width: 100%; /* Ensure the container takes up the full width */
+}
+
+.card {
+    flex: 0 0 auto; /* Ensure cards don't grow or shrink */
+    border: 1px solid #88b529;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.card:last-child {
+    margin-right: 0; /* Remove right margin for the last card */
+}
+
+.cardHeader {
+    background: linear-gradient(to bottom right, #0d160d, #eeeeed);
+    padding: 10px;
+    border-radius: 200px 200px 0 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.cardHeader h2 {
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+    color: #454745cd;
+}
+
+.cardBody {
+    padding: 20px;
+    background: linear-gradient(to bottom right, #99ad99, #262624);
+    height: 150px;
+    border-radius: 0 0 50px 50px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.cardBody p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: "Arial", sans-serif;
+    color: #e5c6c6;
+}
+
+.p1{
+    text-align: right;/*Arabic*/
+}
+
+.recnt
+{
+font-family: "Urbanist", sans-serif;
+font-size: 38px;
+font-weight: 600;
+text-align: left;/*Eng*/
+color: #110229;
+}
+
+.btnAddFeedback
+{
+    height: 2rem;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #000;
+    background-color: #06f135;
+    margin: 1rem 1rem;
+    padding: 0.1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+.btnAddFeedback:hover
+{
+    background-color: #000;
+    color: #e6f3fc;
+}

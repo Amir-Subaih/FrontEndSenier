@@ -1,0 +1,260 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.card
+{
+width: 285px;
+height: 335px;
+border: 1px solid #0000001A;
+}
+.titleState
+{
+font-family: "Urbanist", sans-serif;
+font-size: 38px;
+font-weight: 600;
+text-align: center;
+border-bottom: 2px solid #000;
+margin-bottom: 50px;
+color: #110229;
+}
+.btnSeeAll
+{
+    height: 2rem;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #000;
+    background-color: #b6e1fc;
+    margin: 1rem 1rem;
+    padding: 0.1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+.btnSeeAll:hover
+{
+    background-color: #000;
+    color: #e6f3fc;
+}
+.card img
+{
+width: 265px;
+height: 165px;
+margin: 10px;
+}
+.price
+{
+font-family: "Roboto", sans-serif;
+font-size: 24px;
+font-weight: 500;
+line-height: 28.13px;
+margin-left:10px ;
+color: #000;
+}
+.type
+{
+font-family: "Roboto", sans-serif;
+font-size: 15px;
+font-weight: 500;
+line-height: 16.41px;
+margin-left:10px ;
+color: #00000080 ;
+}
+.address,.area,.chose
+{
+font-family: "Roboto", sans-serif;
+font-size: 12px;
+font-weight: 400;
+line-height: 11.72px;
+margin-left:10px ;
+color: #00000080 ;
+}
+
+.disImg
+{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin: 50px 0px;
+}
+.imageItem img
+{
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 600px;
+    height: 360px;
+    /* object-fit: fill; */
+}
+.iconLocation
+{
+    font-size: 18px;
+    color:#1DAEFF;
+    margin-top: 10px;
+}
+.location,.price
+{
+font-family: "Roboto", sans-serif;
+font-size: 25px;
+font-weight: 400;
+margin-left: 5px;
+}
+
+.cardInformation
+{
+    width: 100%;
+    height: fit-content;
+    border: 1px solid #0000001A;
+    margin-top: 50px;
+}
+.gInfo
+{
+font-family:  "Roboto", sans-serif;
+font-size: 22px;
+font-weight: 500;
+margin: 10px 15px;
+color: #000000;
+}
+
+.infoState
+{
+font-family: "Roboto", sans-serif;
+font-size: 18px;
+font-weight: 500;
+color: #00000080;
+font-style: italic;
+margin-top: 10px;
+}
+
+.detailState
+{
+    margin-top: 12px;
+    font-family: "Roboto", sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #000;
+}
+
+.description
+{
+    width: 100%;
+    height: fit-content;
+    border: 1px solid #0000001A;
+    margin-top: 45px;
+}
+
+.Explanation
+{
+font-family: "Roboto", sans-serif;
+font-size: 22px;
+font-weight: 500;
+margin: 15px 15px;
+}
+.desc
+{
+font-family: "Roboto", sans-serif;
+font-size: 18px;
+font-weight: 400;
+color: #00000080;
+margin: 10px 15px;
+}
+
+.locations select
+{
+    background-color: #d2d8dd;
+    color: #000;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    border-left:2px solid #000 ;
+}
+.types select,.areas select
+{
+    position: relative;
+    right: 23px;
+    background-color: #d2d8dd;
+    color: #000;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    border-left:2px solid #000 ;
+}
+.rentORsells select
+{
+    position: relative;
+    right: 45px;
+    background-color: #d2d8dd;
+    color: #000;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    border-left:2px solid #000 ;
+}
+
+.prices select
+{
+    border-top: 2px solid #000;
+    background-color: #d2d8dd;
+    color: #000;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+}
+.btnSearch button
+{
+    position: relative;
+    right: 45px;
+    width: 305px;
+    padding: 5px 50px;
+    color: #fff;
+    background-color: #1b6541;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    transition: .8s;
+    -webkit-transition: .8s;
+    -moz-transition: .8s;
+    -ms-transition: .8s;
+    -o-transition: .8s;
+}
+.btnSearch button:hover
+{
+    background-color:#1DAEFF;
+}
+
+.btnDelete
+{
+    position: relative;
+    display: flex;
+    justify-content:space-between
+}
+.btnDelete button
+{
+    position: absolute;
+    bottom: 23px;
+    left: 200px;
+    font-size: 16px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+/* Arabic */
+.btnDeleteA
+{
+    position: relative;
+    display: flex;
+    justify-content:space-between
+} 
+.btnDeleteA button
+{
+    position: absolute;
+    bottom: 23px;
+    right: 200px;
+    font-size: 16px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}

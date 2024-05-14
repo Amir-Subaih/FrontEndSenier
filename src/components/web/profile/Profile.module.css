@@ -1,0 +1,50 @@
+
+.profile
+{
+    background-color: antiquewhite;
+    display: flex;
+    gap: 30px;
+
+}
+.profileLinks nav
+{
+    background-color: aqua;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.profileLinks nav a
+{
+    margin-top: 30px;
+    text-decoration: none;
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+    color: white;
+    font-weight: 700;
+    background-color: black;
+    border: 2px solid black;
+    padding: 5px 15px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    transition: 0.8s;
+    -webkit-transition: 0.8s;
+    -moz-transition: 0.8s;
+    -ms-transition: 0.8s;
+    -o-transition: 0.8s;
+}
+.profileLinks nav a:hover
+{
+    background-color: white;
+    color: black;
+}
+.info h5
+{
+    margin-top: 30px;
+    
+}

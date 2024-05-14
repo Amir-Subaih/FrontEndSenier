@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* .container{
+    background-color:#5555
+} */
+.AddState p
+{
+font-family: "Urbanist", sans-serif;
+font-size: 48px;
+font-weight: 600;
+line-height: 72px;
+}
+.AddState span
+{
+font-family: "Urbanist", sans-serif;
+font-size: 18px;
+font-weight: 300;
+line-height: 27px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+.label
+{
+    color: black;
+    font-weight: 700;
+    height: inherit;
+    /* color: #5555; */
+}
+.btn
+{
+    padding: 3px 25px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    font-family: "Urbanist", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #1B6541;
+    color: white;
+    margin-bottom: 40px;
+}
+.btn:hover
+{
+    background-color: black;
+}
+
+/* .right {
+    text-align: center;
+    
+  } */
