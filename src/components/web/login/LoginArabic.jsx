@@ -24,7 +24,7 @@ export default function Login() {
                 setUserToken(data.token);
                 localStorage.setItem("userId", data.other._id);
                 setUserId(data.other._id);
-                toast.success(`مرحبا ${userData.name}`);
+                toast.success(`مرحبا ${data.other.name}`);
                 navigate('/ara');
             }}
             catch(error)

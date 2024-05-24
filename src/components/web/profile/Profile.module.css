@@ -1,37 +1,37 @@
 
 .profile
 {
-    background-color: antiquewhite;
+    background-image: url('../../../../img/login.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: right ;
     display: flex;
-    gap: 30px;
+    margin: 10px 0;
 
 }
 .profileLinks nav
 {
-    background-color: aqua;
+    background-color: rgb(194, 190, 190);
     width: 250px;
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     align-items: center;
     gap: 20px;
 }
 .profileLinks nav a
 {
-    margin-top: 30px;
+    margin-bottom: 1px;
     text-decoration: none;
+    height: 50px;
+    width: 250px;
     font-size: 20px;
     font-family:'Courier New', Courier, monospace;
-    color: white;
+    color: rgb(50, 45, 45);
     font-weight: 700;
-    background-color: black;
-    border: 2px solid black;
+    background-color: rgb(233, 231, 231);
+    border: 2px solid rgb(232, 219, 219);
     padding: 5px 15px;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    -ms-border-radius: 50px;
-    -o-border-radius: 50px;
     transition: 0.8s;
     -webkit-transition: 0.8s;
     -moz-transition: 0.8s;
@@ -40,11 +40,21 @@
 }
 .profileLinks nav a:hover
 {
-    background-color: white;
+    background-color: rgb(1, 138, 249);
     color: black;
+    border: 2px solid rgb(48, 44, 44);
+    transition: 4.8s;
 }
 .info h5
 {
     margin-top: 30px;
     
+}
+.d1 {
+    display: flex;
+    padding-left: 20px;
+}
+.d2 {
+    display: flex;
+    padding-right: 20px;
 }

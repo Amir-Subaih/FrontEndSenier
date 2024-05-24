@@ -56,11 +56,12 @@ export default function Profile() {
       <nav>
         <Link to="">Info</Link>
 
-        <Link  onClick={() => setShowModal(true)}>Delete Account</Link> {/* فتح Modal عند الضغط */}
+        <Link to="updateInfo">Update My Data</Link>
 
         <Link to="myEstate">My Estate</Link>
 
-        <Link to="updateInfo">Update My Data</Link>
+        <Link  onClick={() => setShowModal(true)}>Delete Account</Link> {/* فتح Modal عند الضغط */}
+
       </nav>
 
         <Modal show={showModal} onHide={handleClose}> {/* Modal لتأكيد الحذف */}
@@ -81,7 +82,7 @@ export default function Profile() {
       </Modal>
 
       </div>
-      <div className="data">
+      <div className={`${style.d1}`}>
         <Outlet />
       </div>
     </aside>

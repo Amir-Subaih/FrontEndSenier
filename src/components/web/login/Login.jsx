@@ -30,7 +30,7 @@ export default function Login() {
             setUserToken(data.token);
             localStorage.setItem("userId",data.other._id);
             setUserId(data.other._id);
-            toast.success(`Hello ${userData.name}`);
+            toast.success(`Hello ${data.other.name}`);
             navigat('/');
         }
         }
