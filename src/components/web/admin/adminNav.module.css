@@ -1,0 +1,44 @@
+/* Basic resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Navbar styling */
+.nav1 {
+    position: fixed;
+    top: 0; 
+    right: 0; 
+    width: 82%; 
+    padding: 10px 20px; /* Some padding */
+    z-index: 1000; /* High z-index to stay on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    direction: rtl; /* Right-to-left direction */
+    margin-right:0;
+}
+
+/* Logo styling */
+.logo {
+    height: 40px; /* Adjust as needed */
+    margin-right: 10px; /* Space between the logo and the title */
+    width: 60px;
+}
+
+/* Logo title styling */
+.logoTitle {
+    color: #080808; /* Text color */
+    font-size: 1.5rem; /* Adjust as needed */
+    font-weight: bold; /* Bold text */
+    padding-right: 5px;
+    padding-top: 12px;
+}

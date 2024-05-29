@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import style from '../home/Home.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -9,13 +9,31 @@ import DisplayHouseArabic from '../house/DisplayHouseArabic';
 import DisplayLandArabic from '../land/DisplayLandArabic';
 import ContactUsArabic from '../contact/ContactUsArabic';
 import DisplayFeedbackArabic from '../displayFeedback/DisplayFeedbackArabic';
+import { UserContext } from '../context/User';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+    let {isAdmin}=useContext(UserContext);
+    const navigat=useNavigate();
     const [activeButton, setActiveButton] = useState("");
 
     const isActive = (btn) => {
         setActiveButton(btn);
     }
+    useEffect(() => {
+        if (isAdmin) {
+          try {
+            console.log('user is admin :',isAdmin);
+            navigat('/admin');
+    
+          } catch (error) {
+            console.error('Error decoding the token:', error);
+          }
+        }
+      }, [isAdmin]);
+      if (isAdmin) {
+        navigat('/admin');
+      }
 
     const RecentlyEstate = async () => {
         try {

@@ -1,0 +1,71 @@
+.adminLinks {
+    position: fixed; /* Make the navbar fixed */
+    top: 0; /* Align it to the top */
+    left: 0; /* Align it to the left */
+    height: 100%; /* Full width */
+    background-color: #646262; /* Background color */
+    padding: 10px 20px; /* Some padding */
+    z-index: 1000; /* High z-index to stay on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+
+/* src/components/admin/admin.module.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* src/components/admin/admin.module.css */
+.admin
+  {
+      background-image: url("../../../../img/bg2.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      gap: 30px;
+      width: 100%; /* Ensure the admin container takes full width of its parent */
+      max-width: 100%; /* Prevent overflow */
+      box-sizing: border-box; /* Include padding and border in the element's total width and height */  
+  }  
+
+  .adminLinks nav
+  {
+      background-color: rgb(195, 199, 199);
+      width: 250px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .adminLinks nav a
+  {
+      margin-bottom:1px ;
+      text-decoration: none;
+      height: 50px;
+      width: 245px;
+      font-size: 20px;
+      font-family:'Courier New', Courier, monospace;
+      color: white;
+      font-weight: 700;
+      background-color: rgb(159, 166, 173);
+      border: 2px solid rgb(157, 162, 167);
+      padding: 5px 15px;
+      transition: 0.8s;
+      -webkit-transition: 0.8s;
+      -moz-transition: 0.8s;
+      -ms-transition: 0.8s;
+      -o-transition: 0.8s;
+  }
+  .adminLinks nav a:hover
+  {
+      background-color: white;
+      color: black;
+  }
+
+  .data {
+    flex: 1; /* Make the .data container take up the remaining space */
+    box-sizing: border-box;
+    margin-left: 300px;
+    margin-top: 80px;
+}
