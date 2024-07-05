@@ -1,156 +1,109 @@
-import React, { useState,useContext,useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import style from '../home/Home.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import RecentEstateArabic from '../recentEstates/RecentEstateArabic';
-import axios from 'axios';
-import { useQuery } from 'react-query';
 import DisplayHouseArabic from '../house/DisplayHouseArabic';
 import DisplayLandArabic from '../land/DisplayLandArabic';
 import ContactUsArabic from '../contact/ContactUsArabic';
-import DisplayFeedbackArabic from '../displayFeedback/DisplayFeedbackArabic';
-import { UserContext } from '../context/User';
 import { useNavigate } from 'react-router-dom';
+import DisplayApartmentArabic from '../apartment/DisplayApartmentArabic';
+import DisplayStoreArabic from '../store/DisplayStoreArabic';
+import DisplayChaletArabic from '../chalet/DisplayChaletArabic';
+import FeedbackArabic from '../feedback/FeedbackArabic';
+import LocationArabic from '../location&likeIt/LocationArabic';
+import { UserContext } from '../context/User';
 
-export default function Home() {
-    let {isAdmin}=useContext(UserContext);
-    const navigat=useNavigate();
-    const [activeButton, setActiveButton] = useState("");
+export default function HomeArabic() {
+    let { isAdmin } = useContext(UserContext);
 
-    const isActive = (btn) => {
-        setActiveButton(btn);
-    }
+    const navigat = useNavigate();
     useEffect(() => {
         if (isAdmin) {
-          try {
-            console.log('user is admin :',isAdmin);
-            navigat('/admin');
-    
-          } catch (error) {
-            console.error('Error decoding the token:', error);
-          }
-        }
-      }, [isAdmin]);
-      if (isAdmin) {
-        navigat('/admin');
-      }
+            try {
+                console.log('المستخدم هو مسؤول:', isAdmin);
+                navigat('/admin');
 
-    const RecentlyEstate = async () => {
-        try {
-            const { data } = await axios.get("https://estatetest.onrender.com/api/estate/all?pageNumber=1");
-            return data;
-        } catch (error) {
-            console.error("Error fetching estates:", error);
-            throw error;
+            } catch (error) {
+                console.error('خطأ في فك تشفير الرمز:', error);
+            }
         }
-    }
+    }, [isAdmin]);
 
-    const displayHouse = async () => {
-        try {
-            const { data } = await axios.get("https://estatetest.onrender.com/api/estate/house?typeEatateS=House&pageNumber=1");
-            return data;
-        } catch (error) {
-            console.error("Error fetching house estates:", error);
-            throw error;
-        }
-    }
+    const [location, setLocation] = useState('');
+    const [typeState, setTypeState] = useState('');
+    const [rentrORseller, setRentrORseller] = useState('');
+    const navigate = useNavigate();
+    const handleSearch = () => {
+        navigate(`/ara/searchResultsAra?typeState=${typeState}&cityName=${location}&SR=${rentrORseller}`);
+    };
 
-    const displayLand = async () => {
-        try {
-            const { data } = await axios.get("https://estatetest.onrender.com/api/estate/house?typeEatateS=Land&pageNumber=1");
-            return data;
-        } catch (error) {
-            console.error("Error fetching house estates:", error);
-            throw error;
-        }
-    }
-
-    const displayFeedback = async () => {
-        try {
-            const { data } = await axios.get("https://estatetest.onrender.com/api/feedback/all?pageNum=1");
-            return data;
-        } catch (error) {
-            console.error("Error fetching house estates:", error);
-            throw error;
-        }
-    }
-
-    const { data: estateData, isLoading: isEstateLoading } = useQuery("displayEstate", RecentlyEstate);
-    const { data: estateData1, isLoading: isEstateLoading1 } = useQuery("displayHouseEstate", displayHouse);
-    const { data: estateDataLand, isLoading: isLoadingLand } = useQuery("displayLandEstate", displayLand);
-    const { data: feedbackara, isLoading: isLoadingFeedbackara } = useQuery("displayFeedback", displayFeedback);
+    const searchOnCity = (city) => {
+        navigate(`/ara/searchCityAra?cityName=${city}`);
+    };
 
     return (
         <>
             <div className='container' dir='rtl'>
                 <div className={`${style.bacImg}`}>
                     <div className={`${style.p1}`}>
-                        <p>طريقة سهلة للعثور على العقار المثالي</p>
+                        <p>الطريقة السهلة للعثور على عقار مثالي</p>
                     </div>
 
                     <div className={`${style.p2}`}>
-                        <p>نحن نقدم خدمة كاملة للبيع أو الشراء أو التأجير العقاري.</p>
+                        <p>نحن نقدم خدمة كاملة للبيع والشراء أو الإيجار للعقارات.</p>
                     </div>
 
                     <div className={`${style.rectangle}`}>
-                        {/* <ul className="nav nav-pills gap-5">
-                            <li className={`${style.navitem}`}>
-                                <a className={`nav-link ${activeButton === "rent" ? "active" : ""}`}
-                                    onClick={() => isActive("rent")} >الإيجار</a>
-                            </li>
-                            <li className={`${style.navitem}`}>
-                                <a className={`nav-link ${activeButton === "buy" ? "active" : ""}`}
-                                    onClick={() => isActive("buy")} >شراء</a>
-                            </li>
-                            <li className={`${style.navitem}`}>
-                                <a className={`nav-link ${activeButton === "sell" ? "active" : ""}`}
-                                    onClick={() => isActive("sell")} >بيع</a>
-                            </li>
-                        </ul> */}
-
                         <div className="row">
                             <div className="col-md-4">
-                                <div className={`${style.location}`}>
+                                <div className={`${style.locationAra}`}>
                                     <p>الموقع</p>
 
-                                    <select defaultValue={0} className="form-select" aria-label="Default select example">
-                                        <option value={0}>اختر مدينتك</option>
-                                        <option value={1}>واحد</option>
-                                        <option value={2}>اثنان</option>
-                                        <option value={3}>ثلاثة</option>
+                                    <select className="form-select" aria-label="اختر المدينة الخاصة بك" value={location} onChange={(e) => setLocation(e.target.value)}>
+                                        <option value="">اختر مدينتك</option>
+                                        <option value="Ramallah">رام الله</option>
+                                        <option value="Tulkarm">طولكرم</option>
+                                        <option value="Nablus">نابلس</option>
+                                        <option value="Jenin">جنين</option>
+                                        <option value="Jerusalem">القدس</option>
+                                        <option value="Gaza">غزة</option>
+                                        <option value="Haifa">حيفا</option>
                                     </select>
 
                                 </div>
                             </div>
 
                             <div className="col-md-3">
-                                <div className={`${style.property}`}>
+                                <div className={`${style.propertyAra}`}>
                                     <p>نوع العقار</p>
 
-                                    <select defaultValue={0} className="form-select" aria-label="Default select example">
-                                        <option value={0}>اختر نوع العقار</option>
-                                        <option value={1}>واحد</option>
-                                        <option value={2}>اثنان</option>
+                                    <select className="form-select" aria-label="اختر نوع العقار" value={typeState} onChange={(e) => setTypeState(e.target.value)}>
+                                        <option value="">اختر نوع العقار</option>
+                                        <option value="House">بيت</option>
+                                        <option value="Apartment">شقة</option>
+                                        <option value="Land">أرض</option>
+                                        <option value="Store">متجر</option>
+                                        <option value="Chalet">شاليه</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div className="col-md-3">
-                                <div className={`${style.price}`}>
-                                    <p>نطاق السعر</p>
+                                <div className={`${style.priceAra}`}>
+                                    <p>مالك/مستأجر</p>
 
-                                    <select defaultValue={0} className="form-select" aria-label="Default select example">
-                                        <option value={0}>اختر نطاق السعر</option>
-                                        <option value={1}>واحد</option>
-                                        <option value={2}>اثنان</option>
-                                        <option value={3}>ثلاثة</option>
+                                    <select className="form-select" aria-label="اختر مالك أو مستأجر" value={rentrORseller} onChange={(e) => setRentrORseller(e.target.value)}>
+                                        <option value="">اختر مالك أو مستأجر</option>
+                                        <option value="Rent">إيجار</option>
+                                        <option value="Sale">بيع</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div className="col-md-1">
-                                <div className={`${style.search1}`}>
-                                    <FontAwesomeIcon icon={faMagnifyingGlass} className={`${style.icon}`} />
+                                <div className={`${style.searchAra}`}>
+                                    <FontAwesomeIcon icon={faMagnifyingGlass} className={`${style.icon}`} onClick={handleSearch} />
                                 </div>
                             </div>
                         </div>
@@ -163,37 +116,37 @@ export default function Home() {
                     </div>
                     <div className="row">
                         <div className={`col-md-3 ${style.imgHome}`}>
-                            <img src='../../../../img/alquds.jpeg' className='img-fluid' alt="Jerusalem"/>
+                            <img src='../../../../img/alquds.jpeg' className='img-fluid' onClick={() => searchOnCity("Jerusalem")} />
                             <p>القدس</p>
                         </div>
 
                         <div className={`col-md-3 ${style.imgHome}`}>
-                            <img src='../../../../img/gaza.jpeg' className='img-fluid' alt="Gaza"/>
+                            <img src='../../../../img/gaza.jpeg' className='img-fluid' onClick={() => searchOnCity("Gaza")} />
                             <p>غزة</p>
                         </div>
 
                         <div className={`col-md-3 ${style.imgHome}`}>
-                            <img src='../../../../img/nablus.jpeg' className='img-fluid' alt="Nablus"/>
+                            <img src='../../../../img/nablus.jpeg' className='img-fluid' onClick={() => searchOnCity("Nablus")} />
                             <p>نابلس</p>
                         </div>
 
                         <div className={`col-md-3 ${style.imgHome}`}>
-                            <img src='../../../../img/haifa.jpeg' className='img-fluid w-100' alt="Haifa"/>
+                            <img src='../../../../img/haifa.jpeg' className='img-fluid w-100' onClick={() => searchOnCity("Haifa")} />
                             <p>حيفا</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <RecentEstateArabic rs={estateData} loadingR={isEstateLoading} />
-
-            <DisplayHouseArabic sHouse={estateData1} loadingH={isEstateLoading1} />
-
-            <DisplayLandArabic sLand={estateDataLand} loadingL={isLoadingLand} />
-
-            <DisplayFeedbackArabic df={feedbackara} loadingR={isLoadingFeedbackara}/>
-
+            <LocationArabic />
+            <RecentEstateArabic />
+            <DisplayHouseArabic />
+            <DisplayLandArabic />
+            <DisplayApartmentArabic />
+            <DisplayStoreArabic />
+            <DisplayChaletArabic />
+            <FeedbackArabic />
             <ContactUsArabic />
         </>
-    )
+    );
 }

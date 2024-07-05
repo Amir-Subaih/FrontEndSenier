@@ -8,7 +8,6 @@ export default function Input({ type, title, id, name, value, errors, onChange, 
 
         <div>
           <input type={type} name={name} value={value} id={id} onChange={onChange} onFocus={onFocus} onBlur={onBlur} className="form-control w-50 border border-secondary"/>
-          
         </div>
         {/* "form-control w-50 border border-secondary"  */}
 

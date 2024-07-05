@@ -4,6 +4,10 @@ import style from '../profile/Profile.module.css';
 import { UserContext } from '../context/User';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap'; // استيراد Modal و Button
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileInvoice,faPenToSquare,faBuilding,faHotel,faTrashArrowUp,faHeart } from '@fortawesome/free-solid-svg-icons';
+
+
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -51,16 +55,20 @@ export default function Profile() {
   }
 
   return (
-    <aside className={`${style.profile}`}>
+    <aside className={`mb-5 ${style.profile}`}>
       <div className={`${style.profileLinks}`}>
       <nav>
-        <Link to="">Info</Link>
+        <Link to=""><FontAwesomeIcon icon={faFileInvoice} /> Info</Link>
 
-        <Link to="updateInfo">Update My Data</Link>
+        <Link to="updateInfo"><FontAwesomeIcon icon={faPenToSquare} /> Update My Data</Link>
 
-        <Link to="myEstate">My Estate</Link>
+        <Link to="myEstate"><FontAwesomeIcon icon={faBuilding} /> My Estate</Link>
 
-        <Link  onClick={() => setShowModal(true)}>Delete Account</Link> {/* فتح Modal عند الضغط */}
+        <Link to="updateEstate"><FontAwesomeIcon icon={faHotel} /> Update Estate</Link>
+
+        <Link to={"interst"}><FontAwesomeIcon icon={faHeart} /> Interisting</Link>
+
+        <Link  onClick={() => setShowModal(true)}><FontAwesomeIcon icon={faTrashArrowUp} /> Delete Account</Link> {/* فتح Modal عند الضغط */}
 
       </nav>
 
@@ -82,7 +90,8 @@ export default function Profile() {
       </Modal>
 
       </div>
-      <div className={`${style.d1}`}>
+      
+      <div className={` ${style.d1}`}>
         <Outlet />
       </div>
     </aside>

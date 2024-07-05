@@ -7,17 +7,12 @@ import { Bounce, toast } from 'react-toastify'
 
 import InputUpdate from '../../shared/InputUpdate'
 import { UserContext } from '../context/User'
-import { useNavigate } from 'react-router-dom'
+
 
 export default function UpdateInfo() {
-    const navigate=useNavigate();
-    let {userToken,userData}=useContext(UserContext);
+    let {userToken,userData,userId,setUserData}=useContext(UserContext);
     const [isAccountUpdated, setIsAccountUpdated] = useState(false);
 
-    let [userId,setUserId] =useState(()=>{
-        return localStorage.getItem('userId') || null;
-    })
-    console.log(userId);
 
     const initialValues=
     {
@@ -43,23 +38,23 @@ export default function UpdateInfo() {
                 theme: "dark",
                 transition: Bounce,
                 });
-            setTimeout(()=>{
-                setIsAccountUpdated(true);
-            },2000)
+            // تحديث بيانات المستخدم في السياق (context)
+            setUserData(prevUserData => ({
+                ...prevUserData,
+                name: users.name,
+                email: users.email,
+                phone: users.phone,
+            }));
+
+            setIsAccountUpdated(true);
         }
     }
     useEffect(()=>{
-        if(userId)
-        {
-            localStorage.setItem('userId',userId);
-        }
         if(isAccountUpdated)
         {
-            window.location.reload();
-            // navigate("");
-            // toast.success("Update Success")
+            setIsAccountUpdated(false);
         }
-    },[isAccountUpdated,userId]);
+    },[isAccountUpdated]);
 
     const formik=useFormik({
         initialValues,
@@ -72,6 +67,7 @@ export default function UpdateInfo() {
             name:'name',
             title:'User Name',
             type:'text',
+            className:'form-control w-50',
             value:formik.values.name
         },
         {
@@ -79,6 +75,7 @@ export default function UpdateInfo() {
         name:'email',
         title:'Email address',
         type:'email',
+        className:'form-control w-50',
         value:formik.values.email
         },
         {
@@ -86,6 +83,7 @@ export default function UpdateInfo() {
             name:'phone',
             title:'Phone Number',
             type:'text',
+            className:'form-control w-50',
             value:formik.values.phone
         },
 
@@ -117,7 +115,7 @@ return (
             <div>
                 <form className="mt-3 " onSubmit={formik.handleSubmit}>
                 {renderInputs}
-                <button type="submit" className={`${style.btnLogin}`} disabled={!formik.isValid}>Update</button>
+                <button type="submit" className={`ms-2 ${style.btnLogin}`} disabled={!formik.isValid}>Update</button>
                 </form>
             </div>
         </div>

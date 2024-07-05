@@ -16,7 +16,7 @@ export default function Register() {
         email:'',
         phone:'',
         password:'',
-        confirmPassword:'',
+        confirm_password:'',
     }
     const onSubmit=async users=>{
         try{
@@ -78,11 +78,11 @@ export default function Register() {
     },
     {
         id:'confirmPassword',
-        name:'confirmPassword',
+        name:'confirm_password',
         title:'Confirm Password',
         type:'password',
         className:'form-control',
-        value:formik.values.confirmPassword
+        value:formik.values.confirm_password
         },
     ]
 
@@ -122,7 +122,7 @@ return (
 
                 <form className="mt-3 " onSubmit={formik.handleSubmit}>
                 {renderInputs}
-                <button type="submit" className={`${style.btnLogin}`} disabled={!formik.isValid}>Login</button>
+                <button type="submit" className={`${style.btnLogin}`} disabled={!formik.isValid}>Register</button>
                 </form>
 
                 {passwordFocused && (

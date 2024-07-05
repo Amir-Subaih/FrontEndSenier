@@ -3,38 +3,44 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import style from '../house/DispalyH.module.css';
 
-export default function SeeAllLand() {
-    let [dataState,setDataState]=useState([]);
+export default function SeeAllLandArabic() {
+    let [dataState, setDataState] = useState("");
+    const [loading, setLoading] = useState(false);
     const seeAllL = async () => {
-        const data  = await axios.get("https://estatetest.onrender.com/api/estate/house?typeEatateS=Land");
+        setLoading(true);
+        const data = await axios.get("https://estatetest.onrender.com/api/estate/house?typeEatateS=Land");
         setDataState(data.data.estates);
+        setLoading(false);
         // return data;
     }
-    useEffect(()=>{
+    useEffect(() => {
         seeAllL();
-    },[]);
+    }, []);
 
-    let [cityName,setCityName] = useState("");
-    let [typeEatateS,setTypeEatateS]=useState("");
-    let [SR,setSR]=useState("");
-    // let [price,setPrice]=useState("");
-    // let [area,setArea]=useState("");
-
-    const handelSubmit=async (e)=>{
+    let [cityName, setCityName] = useState("");
+    let [typeEatateS, setTypeEatateS] = useState("");
+    let [renter_seller, setRenter_seller] = useState("");
+    let [minPrice,setMinPrice]=useState("");
+    let [maxPrice,setMaxPrice]=useState("");
+    let [minArea,setMinArea]=useState("");
+    let [maxArea,setMaxArea]=useState("");
+    const handelSubmit = async (e) => {
         e.preventDefault();
         console.log("test");
-        try{
-            const resultSearch=await axios.get(`https://estatetest.onrender.com/api/estate/all?cityName=${cityName}&SR=${SR}&typeEatateS=Land&maxprice=500000&minprice=0`);
-            setDataState(resultSearch.data.estates);
-            console.log(resultSearch);
-            // return data;
-        }catch(err){
+        try {
+            setLoading(true);
+            const result = await axios.get(`https://estatetest.onrender.com/api/estate/all?cityName=${cityName}&SR=${renter_seller}&typeEatateS=Land&maxprice=${maxPrice}&minprice=${minPrice}&minarea=${minArea}&maxarea=${maxArea}`);
+            console.log(result);
+            setDataState(result.data.estates);
+            setLoading(false);
+            // return result.data.estates;
+        } catch (err) {
             console.error(err);
         }
     }
-    // if (isLoading) {
-    //     return <h1>Loading...</h1>
-    // }
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
     return (
         <div className='container my-5'>
             <p className={` ${style.titleState}`}>All Lands</p>
@@ -44,7 +50,7 @@ export default function SeeAllLand() {
                     <div className={`row ${style.row}`}>
                         <div className="col-md-6">
                             <div className={`${style.locations}`}>
-                                <select className="form-select" value={cityName} onChange={(e)=>setCityName(e.target.value)}>
+                                <select className="form-select" value={cityName} onChange={(e) => setCityName(e.target.value)}>
                                     <option value="">Select Location</option>
                                     <option value="Ramallah">Ramallah</option>
                                     <option value="Tulkarm">Tulkarm</option>
@@ -55,7 +61,7 @@ export default function SeeAllLand() {
 
                         <div className="col-md-3">
                             <div className={`${style.types}`}>
-                                <select className="form-select" value={typeEatateS} onChange={(e)=>setTypeEatateS(e.target.value)}>
+                                <select className="form-select" value={typeEatateS} onChange={(e) => setTypeEatateS(e.target.value)}>
                                     <option value="Land">Land</option>
                                 </select>
                             </div>
@@ -63,7 +69,7 @@ export default function SeeAllLand() {
 
                         <div className="col-md-3">
                             <div className={`${style.rentORsells}`}>
-                                <select className="form-select " value={SR} onChange={(e)=>setSR(e.target.value)}>
+                                <select className="form-select " value={renter_seller} onChange={(e) => setRenter_seller(e.target.value)}>
                                     <option value="">renterORseller</option>
                                     <option value="Rent">Renter</option>
                                     <option value="Sale">Seller</option>
@@ -71,27 +77,39 @@ export default function SeeAllLand() {
                             </div>
                         </div>
 
-                        <div className="col-md-6">
+                        <div className="col-md-2">
                             <div className={`${style.prices}`}>
-                                <select className="form-select ">
-                                    <option value="">Price</option>
-                                    <option value="House">0-500$</option>
-                                    <option value="Apartment">500-10000$</option>
-                                    <option value="Apartment">10000-500000$</option>
-                                </select>
+                                <div>
+                                    <input type="number" className="form-control" placeholder="Enter Price" aria-label="Price" aria-describedby="addon-wrapping" value={minPrice} onChange={(e)=>setMinPrice(e.target.value)}/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="col-md-2">
+                            <div className={`${style.prices}`}>
+                                <div>
+                                    <input type="number" className="form-control" placeholder="Enter Price" aria-label="Username" aria-describedby="addon-wrapping" value={maxPrice} onChange={(e)=>setMaxPrice(e.target.value)}/>
+                                </div>
+
                             </div>
                         </div>
 
-                        <div className="col-md-3">
+                        <div className="col-md-2">
                             <div className={`${style.areas}`}>
-                                <select className="form-select ">
-                                    <option value="">Area(m²)</option>
-                                    <option value="House">10-150 M²</option>
-                                    <option value="Apartment">150-250 M²</option>
-                                    <option value="Apartment">250-350 M²</option>
-                                </select>
+                                <div>
+                                    <input type="number" className="ms-5 form-control" placeholder="Enter Min Area" aria-label="Username" aria-describedby="addon-wrapping" value={minArea} onChange={(e)=>setMinArea(e.target.value)} />
+                                </div>
                             </div>
                         </div>
+
+                        <div className="col-md-2">
+                            <div className={`${style.areas}`}>
+                                <div>
+                                    <input type="number" className="ms-5 form-control" placeholder="Enter Max Area" aria-label="Username" aria-describedby="addon-wrapping" value={maxArea} onChange={(e)=>setMaxArea(e.target.value)} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-1"></div>
 
                         <div className="col-md-3 mb-5">
                             <div className={`${style.btnSearch}`}>
@@ -107,13 +125,15 @@ export default function SeeAllLand() {
 
                     <div className="col-md-3" key={estate._id}>
                         <div className={`my-4 ${style.card}`}>
-                            <Link to={`/ditalState/${estate._id}`}>
+                            <Link to={`/ara/ditalStateAra/${estate._id}`}>
                                 <img src={estate.imageUrl[0]} alt='Estate' />
-                                <p className={`${style.price}`}>{estate.price} $</p>
-                                <p className={`${style.type}`}>{estate.typeEstates}</p>
-                                <p className={`${style.address}`}>{estate.address}</p>
-                                <p className={`${style.area}`}>{estate.area} m²</p>
-                                <p className={`${style.chose}`}>{estate.typeEstateSR}</p>
+                                <div className={`${style.cardAra}`}>
+                                    <p className={`${style.price}`}>{estate.price} $</p>
+                                    <p className={`${style.type}`}>{estate.typeEstates}</p>
+                                    <p className={`${style.address}`}>{estate.address}</p>
+                                    <p className={`${style.area}`}>{estate.area} m²</p>
+                                    <p className={`${style.chose}`}>{estate.typeEstateSR}</p>
+                                </div>
                             </Link>
                         </div>
                     </div>

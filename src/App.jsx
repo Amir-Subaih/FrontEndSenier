@@ -1,248 +1,4 @@
-import React, { useContext, useEffect } from 'react'; // Modified: Added semicolon
-import {createBrowserRouter,RouterProvider} from "react-router-dom"; // Modified: Removed extra comma
-
-// Importing English components
-import WebLayout from './layout/WebLayout';
-import Login from './components/web/login/Login';
-import Register from './components/web/register/Register';
-import Home from './components/web/home/Home';
-import {UserContext} from './components/web/context/User';
-import AddState from './components/web/addState/AddState';
-import Profile from './components/web/profile/Profile';
-import UserInfo from './components/web/profile/UserInfo';
-import RecentEstate from './components/web/recentEstates/RecentEstate';
-import MyEstate from './components/web/profile/MyEstate';
-import DetalisEstate from './components/web/displayEstate/DetalisEstate';
-import UpdateInfo from './components/web/profile/UpdateInfo';
-import SeeAllHouse from './components/web/house/SeeAllHouse';
-import SeeAllLand from './components/web/land/SellAllLand';
-import ContactUs from './components/web/contact/ContactUs';
-import AddFeedback from './components/web/addFeedback/AddFeedback';
-
-// Admin
-import Admin from './components/web/admin/Admin';
-import WebLayoutAdmin from './layout/WebLayoutAdmin';
-import AllEstate from './components/web/admin/AllEstate';
-
-// Importing Arabic components
-import WebLayoutArabic from './layout/WebLayoutArabic';
-import LoginArabic from './components/web/login/LoginArabic';
-import RegisterArabic from './components/web/register/RegisterArabic';
-import HomeArabic from './components/web/home/HomeArabic';
-import AddStateArabic from './components/web/addState/AddStateArabic';
-import ProfileArabic from './components/web/profile/ProfileArabic';
-import UserInfoArabic from './components/web/profile/UserInfoArabic';
-import RecentEstateArabic from './components/web/recentEstates/RecentEstateArabic';
-import MyEstateArabic from './components/web/profile/MyEstateArabic';
-import DetalisEstateArabic from './components/web/displayEstate/DetalisEstateArabic';
-import UpdateInfoArabic from './components/web/profile/UpdateInfoArabic';
-import SeeAllHouseArabic from './components/web/house/SeeAllHouseArabic';
-import SeeAllLandArabic from './components/web/land/SellAllLandArabic';
-import ContactUsArabic from './components/web/contact/ContactUsArabic';
-import AddFeedbackArabic from './components/web/addFeedback/AddFeedbackArabic';
-
-
-export default function App() {
-  let {setUserToken,setUserId}=useContext(UserContext);
-
-  useEffect(()=>{
-    const storedToken = localStorage.getItem("userToken");
-    const storedUserId = localStorage.getItem("userId");
-    if(storedToken)
-    {
-      setUserToken(storedToken);
-      setUserId(storedUserId);
-      // localStorage.removeItem("userToken");
-      // localStorage.removeItem("userId");
-    }
-  },[]);
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <WebLayout/>,
-      children:[
-      {
-        path:'/',
-        element:<Home/>
-      },
-      {
-        path:'login',
-        element:<Login/>
-      },
-      {
-        path:"register",
-        element:<Register/>
-      },
-      {
-        path:"addState",
-        element:<AddState/>,
-      },
-      {
-        path:"addFeedback",
-        element:<AddFeedback/>,
-      },
-      {
-        path:"displayEstate",
-        element:<RecentEstate/>
-      },
-      // {
-      //   path:"displayHouse",
-      //   element:<DisplayHouse/>
-      // },
-      {
-        path:"ditalState/:EstateId",
-        element:<DetalisEstate/>
-      },
-      {
-        path:"allHouse",
-        element:<SeeAllHouse/>
-      },
-      {
-        path:"allLand",
-        element:<SeeAllLand/>
-      },
-      {
-        path:"contact",
-        element:<ContactUs/>
-      },
-      {
-        path:"profile",
-        element:<Profile/>,
-        children:[
-          {
-            index:true,
-            element:<UserInfo/>
-          },
-          
-          {
-            path:"myEstate",
-            element:<MyEstate/>,
-            children:[
-              {
-                path:"ditalState/:EstateId",
-                element:<DetalisEstate/>
-              },
-            ]
-          },
-          {
-            path:"updateInfo",
-            element:<UpdateInfo/>
-          }
-        ]
-      }
-    ]
-    },
-    {
-      path: "/ara",
-      element: <WebLayoutArabic/>,
-      children:[
-      {
-        path:'/ara',
-        element:<HomeArabic/>
-      },
-      {
-        path:'loginArabic',
-        element:<LoginArabic/>
-      },
-      {
-        path:"registerArabic",
-        element:<RegisterArabic/>
-      },
-      {
-        path:"addStateArabic",
-        element:<AddStateArabic/>,
-      },
-      {
-        path:"addFeedbackArabic",
-        element:<AddFeedbackArabic/>,
-      },
-      {
-        path:"displayEstateArabic",
-        element:<RecentEstateArabic/>
-      },
-      // {
-      //   path:"displayHouse",
-      //   element:<DisplayHouse/>
-      // },
-      {
-        path:"ditalStateArabic/:EstateId",
-        element:<DetalisEstateArabic/>
-      },
-      {
-        path:"allHouseArabic",
-        element:<SeeAllHouseArabic/>
-      },
-      {
-        path:"allLandArabic",
-        element:<SeeAllLandArabic/>
-      },
-      {
-        path:"contactArabic",
-        element:<ContactUsArabic/>
-      },
-      {
-        path:"profileArabic",
-        element:<ProfileArabic/>,
-        children:[
-          {
-            index:true,
-            element:<UserInfoArabic/>
-          },
-          
-          {
-            path:"myEstateArabic",
-            element:<MyEstateArabic/>,
-            children:[
-              {
-                path:"ditalStateArabic/:EstateId",
-                element:<DetalisEstateArabic/>
-              },
-            ]
-          },
-          {
-            path:"updateInfoArabic",
-            element:<UpdateInfoArabic/>
-          }
-        ]
-      }
-    ]
-    },
-    {
-      path: '/admin',
-      element: <WebLayoutAdmin/>,
-      children:[
-      {
-        path: '/admin',
-        element: <Admin />,
-        children:[
-            {
-              index:true,
-              element:<UserInfo/>
-            },
-            {
-              path:"updateInfo",
-              element:<UpdateInfo/>
-            },
-             {
-               path:"allEstate",
-               element:<AllEstate/>,
-             }
-          ]
-      }
-    ]
-    }
-  ]);
-  return (
-    // <UserContextProvider>
-    <RouterProvider router={router} />
-    // </UserContextProvider>
-  )
-}
-
-//the pase code
-/*
-import React, {  useContext, useEffect } from 'react'
+import React, {  useContext, useEffect, useState } from 'react'
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 import WebLayout from './layout/WebLayout';
 import Login from './components/web/login/Login';
@@ -259,8 +15,25 @@ import UpdateInfo from './components/web/profile/UpdateInfo';
 import SeeAllHouse from './components/web/house/SeeAllHouse';
 import SeeAllLand from './components/web/land/SellAllLand';
 import ContactUs from './components/web/contact/ContactUs';
+import ResultSearch from './components/web/searchResult/ResultSearch';
+import SearchOnCity from './components/web/searchResult/SearchOnCity';
+import SeeAllApartment from './components/web/apartment/SeeAllApartment';
+import SeeAllStore from './components/web/store/SeeAllStore';
+import SeeAllChalet from './components/web/chalet/SeeAllChalet';
+import AddFeedback from './components/web/addFeedback/AddFeedback';
+import Intersting from './components/web/profile/Interisting';
+import Admin from './components/dashbord/admin/Admin';
+import UserList from './components/dashbord/admin/UserList';
+import AllEstate from './components/dashbord/admin/AllEstate';
+import DashbordLayout from './layout/DashbordLayout';
+import UpdateMyEstate from './components/web/profile/UpdateMyEstate';
+import FormUpdateEstate from './components/web/formUpdateEstate/FormUpdateEstate';
+import GridLoader from "react-spinners/ClipLoader";
+import Auth from '../protectedRoute/Auth';
+import ProtectedRoute from '../protectedRoute/ProtectedRoute';
+import style from '../src/App.module.css'
 
-Arabic
+//Arabic
 import WebLayoutArabic from './layout/WebLayoutArabic';
 import LoginArabic from './components/web/login/LoginArabic';
 import RegisterArabic from './components/web/register/RegisterArabic';
@@ -273,25 +46,77 @@ import MyEstateArabic from './components/web/profile/MyEstateArabic';
 import DetalisEstateArabic from './components/web/displayEstate/DetalisEstateArabic';
 import UpdateInfoArabic from './components/web/profile/UpdateInfoArabic';
 import SeeAllHouseArabic from './components/web/house/SeeAllHouseArabic';
-import SeeAllLandArabic from './components/web/land/SellAllLandArabic';
+import SeeAllLandArabic from './components/web/land/SeeAllLandArabic';
 import ContactUsArabic from './components/web/contact/ContactUsArabic';
+import ResultSearchArabic from './components/web/searchResult/ResultSearchArabic';
+import SearchOnCityArabic from './components/web/searchResult/SearchOnCityArabic';
+import SeeAllApartmentArabic from './components/web/apartment/SeeAllApartmentArabic';
+import SeeAllStoreArabic from './components/web/store/SeeAllStoreArabic';
+import SeeAllChaletArabic from './components/web/chalet/SeeAllChaletArabic';
+import AddFeedbackArabic from './components/web/addFeedback/AddFeedbackArabic';
+import InterstingArabic from './components/web/profile/InteristingArabic';
+import FormUpdateEstateArabic from './components/web/formUpdateEstate/FormUpdateEstateArabic';
+import UpdateMyEstateArabic from './components/web/profile/UpdateMyEstateArabic';
+
+
+
 
 export default function App() {
   let {setUserToken,setUserId}=useContext(UserContext);
-
+  const [loading,setLoading]=useState(false);
   useEffect(()=>{
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+    },5000)
+  },[])
+
+  useEffect(() => {
     const storedToken = localStorage.getItem("userToken");
     const storedUserId = localStorage.getItem("userId");
-    if(storedToken)
-    {
+
+    // startLoading();
+    if (storedToken && storedUserId) {
       setUserToken(storedToken);
       setUserId(storedUserId);
-      // localStorage.removeItem("userToken");
-      // localStorage.removeItem("userId");
     }
-  },[]);
+  }, [setUserToken, setUserId]);
 
+  
   const router = createBrowserRouter([
+    {
+      path:"/admin",
+      element:<DashbordLayout/>,
+      children:[
+        {
+          path:"/admin",
+          element:<Admin/>,
+          children:[
+            {
+              index:true,
+              element:<UserInfo/>
+            },
+            {
+              path:"updateInfo",
+              element:<UpdateInfo/>
+            },
+            {
+              path:"allEstate",
+              element:<AllEstate/>,
+            },
+            {
+              path:"ditalStateAdmin/:EstateId",
+              element:<DetalisEstate/>
+            },
+            {
+              path:"allUser",
+              element:<UserList/>
+            }
+          ]
+        },
+        
+      ]
+    },
     {
       path: "/",
       element: <WebLayout/>,
@@ -302,7 +127,10 @@ export default function App() {
       },
       {
         path:'login',
-        element:<Login/>
+        element:
+        <Auth>
+        <Login/>
+        </Auth>
       },
       {
         path:"register",
@@ -316,10 +144,6 @@ export default function App() {
         path:"displayEstate",
         element:<RecentEstate/>
       },
-      // {
-      //   path:"displayHouse",
-      //   element:<DisplayHouse/>
-      // },
       {
         path:"ditalState/:EstateId",
         element:<DetalisEstate/>
@@ -329,7 +153,7 @@ export default function App() {
         element:<SeeAllHouse/>
       },
       {
-        path:"allLand",
+        path:"allLands",
         element:<SeeAllLand/>
       },
       {
@@ -337,8 +161,35 @@ export default function App() {
         element:<ContactUs/>
       },
       {
+        path:"allApartments",
+        element:<SeeAllApartment/>
+      },
+      {
+        path:"allStores",
+        element:<SeeAllStore/>
+      },
+      {
+        path:"allChalets",
+        element:<SeeAllChalet/>
+      },
+      {
+        path:"searchResults",
+        element:<ResultSearch/>
+      },
+      {
+        path:"searchCity",
+        element:<SearchOnCity/>
+      },
+      {
+        path:"addFeedback",
+        element:<AddFeedback/>
+      },
+      {
         path:"profile",
-        element:<Profile/>,
+        element:
+        <ProtectedRoute>
+        <Profile/>,
+        </ProtectedRoute>,
         children:[
           {
             index:true,
@@ -358,9 +209,21 @@ export default function App() {
           {
             path:"updateInfo",
             element:<UpdateInfo/>
-          }
+          },
+          {
+            path:"interst",
+            element:<Intersting/>
+          },
+          {
+            path:"updateEstate",
+            element:<UpdateMyEstate/>,
+          },
         ]
-      }
+      },
+      {
+        path:"/formUpdate/:EstateId",
+        element:<FormUpdateEstate/>
+      },
     ]
     },
     {
@@ -372,44 +235,70 @@ export default function App() {
         element:<HomeArabic/>
       },
       {
-        path:'loginArabic',
-        element:<LoginArabic/>
+        path:'loginAra',
+        element:
+        <Auth>
+        <LoginArabic/>
+        </Auth>
       },
       {
-        path:"registerArabic",
+        path:"registerAra",
         element:<RegisterArabic/>
       },
       {
-        path:"addStateArabic",
+        path:"addStateAra",
         element:<AddStateArabic/>,
       },
       {
-        path:"displayEstateArabic",
+        path:"displayEstateAra",
         element:<RecentEstateArabic/>
       },
-      // {
-      //   path:"displayHouse",
-      //   element:<DisplayHouse/>
-      // },
       {
-        path:"ditalStateArabic/:EstateId",
+        path:"ditalStateAra/:EstateId",
         element:<DetalisEstateArabic/>
       },
       {
-        path:"allHouseArabic",
+        path:"allHouseAra",
         element:<SeeAllHouseArabic/>
       },
       {
-        path:"allLandArabic",
+        path:"allLandsAra",
         element:<SeeAllLandArabic/>
       },
       {
-        path:"contactArabic",
+        path:"contactAra",
         element:<ContactUsArabic/>
       },
       {
-        path:"profileArabic",
-        element:<ProfileArabic/>,
+        path:"allApartmentsAra",
+        element:<SeeAllApartmentArabic/>
+      },
+      {
+        path:"allStoresAra",
+        element:<SeeAllStoreArabic/>
+      },
+      {
+        path:"allChaletsAra",
+        element:<SeeAllChaletArabic/>
+      },
+      {
+        path:"searchResultsAra",
+        element:<ResultSearchArabic/>
+      },
+      {
+        path:"searchCityAra",
+        element:<SearchOnCityArabic/>
+      },
+      {
+        path:"addFeedbackAra",
+        element:<AddFeedbackArabic/>
+      },
+      {
+        path:"profileAra",
+        element:
+        <ProtectedRoute>
+        <ProfileArabic/>,
+        </ProtectedRoute>,
         children:[
           {
             index:true,
@@ -417,29 +306,51 @@ export default function App() {
           },
           
           {
-            path:"myEstateArabic",
+            path:"myEstateAra",
             element:<MyEstateArabic/>,
             children:[
               {
-                path:"ditalStateArabic/:EstateId",
+                path:"ditalStateAra/:EstateId",
                 element:<DetalisEstateArabic/>
               },
             ]
           },
           {
-            path:"updateInfoArabic",
+            path:"updateInfoAra",
             element:<UpdateInfoArabic/>
-          }
+          },
+          {
+            path:"interstAra",
+            element:<InterstingArabic/>
+          },
+          {
+            path:"updateEstateAra",
+            element:<UpdateMyEstateArabic/>,
+          },
         ]
-      }
+      },
+      {
+        path:"formUpdateAra/:EstateId",
+        element:<FormUpdateEstateArabic/>
+      },
     ]
     },
   ]);
+  const backgroundImageUrl = "../img/gaza.jpeg";
   return (
-    // <UserContextProvider>
-    <RouterProvider router={router} />
-    // </UserContextProvider>
+    <>
+    {loading?
+    <div className={`spiners`}>
+          <GridLoader
+            color={"#36d7b7"}
+            loading={loading} 
+            size={200}  
+            aria-label="Loading Spinner" 
+            data-testid="loader"/>
+      </div>
+      : 
+      <RouterProvider router={router} />
+    }
+    </>
   )
 }
-
-*/

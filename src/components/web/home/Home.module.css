@@ -65,11 +65,11 @@
     
 } */
 
-.location,.property,.price
+.location,.property,.price,.priceAra,propertyAra
 {
     position: relative;
 } 
-.location p,.property p, .price p
+.location p,.property p, .price p,.priceAra p,.propertyAra p
 {
 font-family: "Inter", sans-serif;
 font-size: 18px;
@@ -80,6 +80,12 @@ font-weight: 600;
     position: absolute;
     top: 7px;
     left: 30px;
+}
+.locationAra p
+{
+    position: absolute;
+    top: 7px;
+    right: 30px;
 }
 .location select
 {
@@ -92,8 +98,19 @@ font-size: 15px;
 font-weight: 400;
 width: 70%;
 }
+.locationAra select
+{
+position: absolute;
+top: 40px;
+right: 20px;
+color: #8F90A6;
+font-family: "Inter", sans-serif;
+font-size: 15px;
+font-weight: 400;
+width: 25%;
+}
 
-.location p::before
+.location p::before,.locationAra p::before
 {
     content: '';
     position: absolute;
@@ -114,7 +131,7 @@ width: 70%;
     -ms-transition: 1s;
     -o-transition: 1s;
 }
-.location p:hover::before,.property p:hover::after,.price p:hover::after
+.location p:hover::before,.property p:hover::after,.price p:hover::after,.priceAra p:hover::after,.propertyAra p:hover::after,.locationAra p:hover::before
 {
     background-color: #1DAEFF;
     cursor: pointer;
@@ -125,6 +142,12 @@ width: 70%;
     position: absolute;
     top: 7px;
     left: -40px;
+}
+.propertyAra p
+{
+    position: absolute;
+    top: 7px;
+    right: 270px;
 }
 .property select
 {
@@ -137,7 +160,18 @@ width: 70%;
     font-weight: 400;
     /* width: 70%; */
 }
-.property p::after,.price p::after
+.propertyAra select
+{
+    position: absolute;
+    top: 40px;
+    right: 270px;
+    color: #8F90A6;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    width: 30%; 
+}
+.property p::after,.price p::after,.priceAra p::after,.propertyAra p::after
 {
     content: '';
     position: absolute;
@@ -165,7 +199,13 @@ width: 70%;
     top: 7px;
     left: -22px;
 }
-.price select
+.priceAra p
+{
+    position: absolute;
+    top: 7px;
+    right: 22px;
+}
+.price select,.priceAra select
 {
     position: absolute;
     top: 40px;
@@ -190,11 +230,11 @@ width: 70%;
     -ms-transition: .5s;
     -o-transition: .5s;
 }
-.search1
+.searchAra
 {
     position: relative;
     top: 30px;
-    right: 19px;
+    left: 19px;
     width: 50px;
     height: 50px;
     border-radius: 15px;
@@ -204,8 +244,9 @@ width: 70%;
     -moz-transition: .5s;
     -ms-transition: .5s;
     -o-transition: .5s;
+    margin-right: 40px;
 }
-.search .icon,.search1 .icon
+.search .icon,.searchAra .icon
 {
     position: absolute;
     color: #fff;
@@ -213,7 +254,7 @@ width: 70%;
     left: 15.5px;
     font-size: 20px;
 }
-.search , .search1:hover
+.search:hover,.searchAra:hover
 {
     background-color: #000;
     cursor: pointer;
@@ -243,12 +284,14 @@ height: 92px;
     -o-border-radius: 30px;
     opacity: 70%;
     height: 450px;
+    
 }
 .imgHome
 {
     position: relative;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 .imgHome p
 {

@@ -7,8 +7,9 @@
     background-position: right ;
     display: flex;
     margin: 10px 0;
-
+    
 }
+
 .profileLinks nav
 {
     background-color: rgb(194, 190, 190);
@@ -32,6 +33,7 @@
     background-color: rgb(233, 231, 231);
     border: 2px solid rgb(232, 219, 219);
     padding: 5px 15px;
+    margin-top: 20px;
     transition: 0.8s;
     -webkit-transition: 0.8s;
     -moz-transition: 0.8s;
@@ -45,16 +47,23 @@
     border: 2px solid rgb(48, 44, 44);
     transition: 4.8s;
 }
-.info h5
+.info h5, .infoAra h5
 {
     margin-top: 30px;
     
 }
 .d1 {
-    display: flex;
-    padding-left: 20px;
+    /* display: flex;
+    padding-left: 20px; */
+    
+        flex: 1 ; /* Make the .data container take up the remaining space */
+        margin-left: 10px;
 }
-.d2 {
-    display: flex;
-    padding-right: 20px;
+
+
+/* Arabic */
+.infoAra
+{
+    margin-right: 30px;
+    
 }

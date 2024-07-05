@@ -6,6 +6,16 @@
 width: 285px;
 height: 335px;
 border: 1px solid #0000001A;
+background-color: white;
+}
+.cardAra
+{
+width: 285px;
+height: 157px;
+border: 1px solid #0000001A;
+background-color: white;
+padding: 10px 0 5px 0;
+padding-right: 10px;
 }
 .titleState
 {
@@ -55,6 +65,7 @@ font-weight: 500;
 line-height: 28.13px;
 margin-left:10px ;
 color: #000;
+
 }
 .type
 {
@@ -125,6 +136,7 @@ font-family: "Roboto", sans-serif;
 font-size: 18px;
 font-weight: 500;
 color: #00000080;
+/* color: white; */
 font-style: italic;
 margin-top: 10px;
 }
@@ -138,7 +150,7 @@ margin-top: 10px;
     color: #000;
 }
 
-.description
+.description,.map
 {
     width: 100%;
     height: fit-content;
@@ -170,7 +182,7 @@ margin: 10px 15px;
     font-family: "Roboto", sans-serif;
     border-left:2px solid #000 ;
 }
-.types select,.areas select
+.types select,.areas input
 {
     position: relative;
     right: 23px;
@@ -191,7 +203,7 @@ margin: 10px 15px;
     border-left:2px solid #000 ;
 }
 
-.prices select
+.prices input
 {
     border-top: 2px solid #000;
     background-color: #d2d8dd;
@@ -220,7 +232,7 @@ margin: 10px 15px;
     background-color:#1DAEFF;
 }
 
-.btnDelete
+.btnDelete,.btnDeleteAra
 {
     position: relative;
     display: flex;
@@ -240,13 +252,11 @@ margin: 10px 15px;
 }
 
 /* Arabic */
-.btnDeleteA
-{
-    position: relative;
-    display: flex;
-    justify-content:space-between
-} 
-.btnDeleteA button
+.caver1{
+    height: 370px;
+}
+
+.btnDeleteAra button
 {
     position: absolute;
     bottom: 23px;
@@ -258,3 +268,10 @@ margin: 10px 15px;
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
 }
+.btnAra button{
+    position: absolute;
+    width: 100px;
+    right: 180px;
+}
+
+

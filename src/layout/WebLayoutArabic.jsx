@@ -3,7 +3,7 @@ import NavbarArabic from '../components/web/navbar/NavbarArabic.jsx'
 import FooterArabic from '../components/web/footer/FooterArabic.jsx'
 import { Outlet } from 'react-router-dom'
 
-export default function WebLayout() {
+export default function WebLayoutArabic() {
   return (
     <>
     <NavbarArabic/>

@@ -1,5 +1,5 @@
+import React, { useState } from 'react'
 import { useFormik } from 'formik'
-import React ,{useState} from 'react'
 import { registerSchema } from '../../../validation/Validation'
 import Input from '../../shared/Input'
 import style from '../login/Login.module.css'
@@ -7,25 +7,26 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-export default function Register() {
-    const navigate = useNavigate();
+export default function RegisterArabic() {
+    const navigat = useNavigate();
     const [passwordFocused, setPasswordFocused] = useState(false);
+
     const initialValues = {
         name: '',
         email: '',
         phone: '',
         password: '',
-        confirmPassword:'',
+        confirm_password: '',
     }
+
     const onSubmit = async users => {
         try {
             const { data } = await axios.post("https://estatetest.onrender.com/api/auth/register", users);
             console.log(data);
             if (data.message === "success") {
                 toast.success("تم التسجيل بنجاح");
-                navigate("/ara/loginArabic")
+                navigat("/ara/loginAra");
             }
-
         } catch (err) {
             console.log(err);
         }
@@ -38,7 +39,6 @@ export default function Register() {
     })
 
     const inputs = [
-
         {
             id: 'name',
             name: 'name',
@@ -58,7 +58,7 @@ export default function Register() {
         {
             id: 'phone',
             name: 'phone',
-            title: 'الهاتف',
+            title: 'رقم الهاتف',
             className: 'form-control',
             type: 'text',
             value: formik.values.phone,
@@ -74,19 +74,18 @@ export default function Register() {
             onBlur: () => setPasswordFocused(false)
         },
         {
-            id:'confirmPassword',
-            name:'confirmPassword',
-            title:'تأكيد كلمة المرور',
-            type:'password',
-            className:'form-control',
-            value:formik.values.confirmPassword
+            id: 'confirmPassword',
+            name: 'confirm_password',
+            title: 'تأكيد كلمة المرور',
+            type: 'password',
+            className: 'form-control',
+            value: formik.values.confirm_password
         },
-
     ]
 
-    const renderInputs = inputs.map((input, index) => {
-        return (
-            <Input type={input.type}
+    const renderInputs = inputs.map((input, index) => (
+        <Input
+            type={input.type}
             id={input.id}
             name={input.name}
             title={input.title}
@@ -97,10 +96,10 @@ export default function Register() {
             touched={formik.touched}
             onBlur={formik.handleBlur}
             onFocus={input.onFocus}
-            key={index}/>
+            key={index}
+        />
+    ));
 
-        )
-    })
     return (
         <div className='container' dir='rtl'>
             <div className="row">
@@ -115,27 +114,30 @@ export default function Register() {
 
                     <div className={`${style.content}`}>
                         <h1>التسجيل</h1>
-                        <p>كن عضوًا.</p>
+                        <p>كن عضوًا جديدًا.</p>
                     </div>
 
                     <form className="mt-3 " onSubmit={formik.handleSubmit}>
                         {renderInputs}
-                        <button type="submit" className={`${style.btnLogin}`} disabled={!formik.isValid}>تسجيل الدخول</button>
+                        <button type="submit" className={`${style.btnLogin}`} disabled={!formik.isValid}>التسجيل</button>
                     </form>
-                    {passwordFocused && (
-                    <div className="password-rules">
-                        <ul>
-                            <li>على الأقل 8 أحرف </li>
-                            <li>يحتوي على رقم</li>
-                            <li>يحتوي على حرف كبير</li>
-                            <li>يحتوي على حرف صغير</li>
-                            <li>يحتوي على حرف خاص (!@#$%^&*)</li>
-                        </ul>
+
+                    <div className={`${style.dontAcount}`}>
+                        <p> تمتلك حسابًا؟ <Link to={"/ara/loginAra"}> <span>سجل دخول هنا</span> </Link></p>
                     </div>
+
+                    {passwordFocused && (
+                        <div className="password-rules">
+                            <ul>
+                                <li>يجب أن تكون على الأقل 8 أحرف</li>
+                                <li>يجب أن تحتوي على رقم واحد على الأقل</li>
+                                <li>يجب أن تحتوي على حرف كبير وحرف صغير على الأقل</li>
+                                <li>يجب أن تحتوي على حرف خاص (!@#$%^&*)</li>
+                            </ul>
+                        </div>
                     )}
                 </div>
             </div>
-
         </div>
     )
 }

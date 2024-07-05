@@ -16,7 +16,7 @@ export const registerSchema=yup.object({
     // .matches(/(?=.*[a-z])/, 'Password must contain a lowercase letter')
     .matches(/(?=.*[A-Z])/, 'Password must contain an uppercase letter')
     .matches(/(?=.*[!@#$%^&*])/, 'Password must contain a special character'),
-    confirmPassword:yup.string()
+    confirm_password:yup.string()
     .required('Password is required')
     .min(8, 'Password must be at least 8 characters long')
     .matches(/(?=.*[0-9])/, 'Password must contain a number')
@@ -31,6 +31,10 @@ export const UpdateInfoSchema=yup.object({
     phone:yup.string(),
 });
 
+export const InterstingSchema=yup.object({
+    location:yup.string().required("Location is required"),
+    typeEstateLikeIt:yup.string().required("Like It is required"),
+});
 export const ContactSchema=yup.object({
     name:yup.string().required("Name is required"),
     email:yup.string().required("Email is required"),

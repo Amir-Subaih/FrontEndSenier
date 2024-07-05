@@ -14,6 +14,7 @@ color: #110229;
     object-fit: fill;   
 }
 
+
 .item
 {
     background-color: white;
@@ -85,4 +86,10 @@ color: #110229;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     
+}
+
+/* Arabic*/
+.recntAra
+{
+text-align: right;
 }

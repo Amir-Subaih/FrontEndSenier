@@ -1,27 +1,28 @@
-import axios from 'axios'
-import React from 'react'
-import { useQuery } from 'react-query';
+
+import React, { useContext } from 'react'
 import style from './Estate.module.css';
 import { Link } from 'react-router-dom';
+import { DisplayContext } from '../context/Display';
+import { useQuery } from 'react-query';
 
-export default function Estate({rs,loadingR}) {
-    console.log(rs);
-    // const displayEstate = async () => {
-    //     const { data } = await axios.get("https://estatetest.onrender.com/api/estate/all?pageNumber=1 ");
-    //     // console.log(data);
-    //     return data;
-    // }
-    // const { data, isLoading } = useQuery("displayEstate", displayEstate);
+export default function RecentEstate() {
+
+    const {displayRecentEstate}=useContext(DisplayContext);
+    const displayRecent =async()=>{
+        const result = await displayRecentEstate();
+        return result;
+    }
+    const { data, isLoading } = useQuery("displayEstate", displayRecent);
     // console.log(data);
 
-    if (loadingR) {
+    if (isLoading) {
         return <h1>Loading...</h1>
     }
     return (
         <div className={`container my-5 ${style.recnt}`}>
             <p>Recently Added</p>
             <div className="row">
-                { rs.estates? rs.estates.map((state) =>
+                { data.estates? data.estates.map((state) =>
                     <div className={`col-md-6  ${style.item}`} key={state._id}>
                         <div className="img">
                             <Link to={`/ditalState/${state._id}`}>

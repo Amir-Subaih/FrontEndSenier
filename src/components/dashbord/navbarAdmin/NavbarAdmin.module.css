@@ -25,6 +25,7 @@ body {
     justify-content: center; /* Center items horizontally */
     direction: rtl; /* Right-to-left direction */
     margin-right:0;
+    background-color: white;
 }
 
 /* Logo styling */
@@ -41,4 +42,5 @@ body {
     font-weight: bold; /* Bold text */
     padding-right: 5px;
     padding-top: 12px;
+    
 }
